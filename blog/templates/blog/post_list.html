@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+{% block main %}
+ <div class="posts">
+  <ul class="posts__list">
+  {% if post_list %}
+    {% for post in post_list %}
+    <li>
+      <a href="{{ post.get_absolute_url }}">
+          <h2 class="posts__title">{{ post.title }}</h2>
+          <span class="posts__date">{{ post.created_at | date:"M d, Y"}}</span>
+      </a>
+    </li>
+    {% endfor %}
+  {% else %}
+  <li>
+    <h2 class="posts__title">No Posts Yet.</h2>
+  </li>
+  {% endif %}
+
+  </ul>
+</div>
+{% endblock %}

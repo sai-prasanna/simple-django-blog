@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+{% block head_title %} {{ post.title }} {% endblock %}
+
+{% block main %}
+<article class="post clear">
+      <h1 class="post__title">
+        {{ post.title }}
+      </h1>
+      <div class="post__meta">
+        <p>
+          {{ post.created_at | date:"M d, Y" }}
+        </p>
+      </div>
+      <div class="post__content">
+      {{ post.content }}
+      </div>
+</article>
+{% endblock %}

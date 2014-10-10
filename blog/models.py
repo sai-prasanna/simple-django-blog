@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from autoslug import AutoSlugField
-
+from django.core.urlresolvers import reverse
 
 class Post(models.Model):
 
@@ -14,13 +14,16 @@ class Post(models.Model):
     content = models.TextField()
 
     slug = AutoSlugField(populate_from='title', unique=True)
-    categories = models.ManyToManyField('Category', related_name='posts')
+    categories = models.ManyToManyField('Category', related_name='posts', null=True, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
         return self.slug
+
+    def get_absolute_url(self):
+        return reverse('post-detail', args=[self.slug])
 
 
 class Category(models.Model):
