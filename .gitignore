@@ -36,4 +36,4 @@ nosetests.xml
 production.py
 
 #Media files
-/media/
+media/
