@@ -1,5 +1,5 @@
 *.py[cod]
- 
+
 # Packages
 *.egg
 *.egg-info
@@ -15,15 +15,15 @@ develop-eggs
 lib
 lib64
 __pycache__
- 
+
 # Installer logs
 pip-log.txt
- 
+
 # Unit test / coverage reports
 .coverage
 .tox
 nosetests.xml
- 
+
 # Eclipse pydev
 .project
 .pydevproject
@@ -34,3 +34,6 @@ nosetests.xml
 
 #Production settings
 production.py
+
+#Media files
+/media/
