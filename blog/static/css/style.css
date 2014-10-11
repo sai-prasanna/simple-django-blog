@@ -63,6 +63,10 @@ code, kbd, pre, samp {
 pre {
     white-space: pre-wrap;
 }
+.codehilite pre{
+    padding: 0 0 0 30px;
+    background-color: #2B2626;
+}
 q {
     quotes: "\201C" "\201D" "\2018" "\2019"
 }

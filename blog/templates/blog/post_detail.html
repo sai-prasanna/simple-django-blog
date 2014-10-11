@@ -12,7 +12,12 @@
         </p>
       </div>
       <div class="post__content">
-      {{ post.content }}
+      {{ post.content|safe }}
       </div>
 </article>
 {% endblock %}
+
+{% block js %}
+{{ block.super }}
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=sons-of-obsidian"></script>
+ {% endblock %}
