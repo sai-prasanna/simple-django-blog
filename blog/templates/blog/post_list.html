@@ -4,17 +4,28 @@
   <ul class="posts__list">
   {% if post_list %}
     {% for post in post_list %}
-    <li>
-      <a href="{{ post.get_absolute_url }}">
-          <h2 class="posts__title">{{ post.title }}</h2>
-          <span class="posts__date">{{ post.created_at | date:"M d, Y"}}</span>
-      </a>
-    </li>
+      <li>
+        <a href="{% url 'post-detail' post.slug %}">
+            <h2 class="posts__title">{{ post.title }}</h2>
+            <span class="posts__date">{{ post.created_at | date:"M d, Y"}}</span>
+        </a>
+
+<!--         <ul class="posts__meta-categories">
+        {% for category in post.categories.all %}
+          <li>
+            <a href="{{ category.get_absolute_url }}">
+            <i class="fa fa-tag"></i>
+            {{ category }}
+            </a>
+          </li>
+        {% endfor %}
+        </ul> -->
+      </li>
     {% endfor %}
   {% else %}
-  <li>
-    <h2 class="posts__title">No Posts Yet.</h2>
-  </li>
+      <li>
+        <h2 class="posts__title">No Posts Yet.</h2>
+      </li>
   {% endif %}
 
   </ul>

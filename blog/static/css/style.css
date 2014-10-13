@@ -63,7 +63,7 @@ code, kbd, pre, samp {
 pre {
     white-space: pre-wrap;
 }
-.codehilite pre{
+pre.prettyprinted{
     padding: 0 0 0 30px;
     background-color: #2B2626;
 }
@@ -262,12 +262,18 @@ h6 {
 }
 .post, .posts {
     max-width: 800px;
-    margin: 0 auto;
 }
-.posts__list li {
+.posts{
+    margin: 20px auto;
+}
+.post{
+    margin: 20px auto;
+}
+
+.posts__list > li {
     text-align: center;
 }
-.posts__list li a {
+.posts__list > li > a {
     display: block;
     padding: 20px 25px;
 }
@@ -329,6 +335,8 @@ h6 {
     font-size: 18px;
     line-height: 1.5;
 }
+
+
 .disqus {
     margin: 0 0 50px;
 }

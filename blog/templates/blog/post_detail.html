@@ -3,17 +3,30 @@
 
 {% block main %}
 <article class="post clear">
-      <h1 class="post__title">
-        {{ post.title }}
-      </h1>
-      <div class="post__meta">
-        <p>
-          {{ post.created_at | date:"M d, Y" }}
-        </p>
-      </div>
-      <div class="post__content">
-      {{ post.content|safe }}
-      </div>
+  <h1 class="post__title">
+    {{ post.title }}
+  </h1>
+  <div class="post__meta">
+    <div class="post__meta_date">
+      {{ post.created_at | date:"M d, Y" }}
+    </div>
+
+    <ul class="post__meta-categories">
+    {% for category in post.categories.all %}
+      <li>
+        <a href="{{ category.get_absolute_url }}">
+        <i class="fa fa-tag"></i>
+        {{ category.name }}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+
+  </div>
+  <div class="post__content">
+  {{ post.content|safe }}
+  </div>
+
 </article>
 {% endblock %}
 

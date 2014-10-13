@@ -29,6 +29,9 @@ class Post(models.Model):
     def __unicode__(self):
         return "%s" %(self.title)
 
+    def __str__(self):
+        return "%s" %(self.title)
+
 
     def get_absolute_url(self):
         return reverse('post-detail', args=[self.slug])
@@ -41,6 +44,7 @@ class Category(models.Model):
     """
 
     name = models.CharField(max_length=50)
+    slug = AutoSlugField(populate_from='name', unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -50,3 +54,9 @@ class Category(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('category-list', args=[self.slug])
