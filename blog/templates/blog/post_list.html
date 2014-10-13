@@ -1,33 +1,49 @@
 {% extends 'blog/base.html' %}
 {% block main %}
- <div class="posts">
-  <ul class="posts__list">
+<div class="posts">
+  {% if category %}
+   <h2 class="category__title">Category: {{ category.name }}</h2>
+  {% endif %}
   {% if post_list %}
-    {% for post in post_list %}
-      <li>
-        <a href="{% url 'post-detail' post.slug %}">
-            <h2 class="posts__title">{{ post.title }}</h2>
-            <span class="posts__date">{{ post.created_at | date:"M d, Y"}}</span>
-        </a>
-
-<!--         <ul class="posts__meta-categories">
-        {% for category in post.categories.all %}
-          <li>
-            <a href="{{ category.get_absolute_url }}">
-            <i class="fa fa-tag"></i>
-            {{ category }}
-            </a>
-          </li>
-        {% endfor %}
-        </ul> -->
-      </li>
-    {% endfor %}
+    <ul class="posts__list">
+      {% for post in post_list %}
+        <li>
+          <a href="{% url 'post-detail' post.slug %}">
+              <h2 class="posts__title">{{ post.title }}</h2>
+              <span class="posts__date">{{ post.created_at | date:"M d, Y"}}</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+    {% if is_paginated %}
+      <div class="pagination clear">
+        {% if page_obj.has_previous %}
+          <a href="?page={{ page_obj.previous_page_number }}" class="pagination--previous">
+            <i class="fa fa-angle-double-left"></i>
+            Previous
+          </a>
+        {% else %}
+          <span class="pagination--previous">
+            <i class="fa fa-angle-double-left"></i>
+            Previous
+          </span>
+        {% endif %}
+        {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}" class="pagination--next">
+            Next
+            <i class="fa fa-angle-double-right"></i>
+          </a>
+        {% else %}
+          <span class="pagination--next">
+            Next
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        {% endif %}
+      </div>
+    {% endif %}
   {% else %}
-      <li>
-        <h2 class="posts__title">No Posts Yet.</h2>
-      </li>
+    <h2 class="posts__title">No Posts Yet.</h2>
   {% endif %}
 
-  </ul>
 </div>
 {% endblock %}

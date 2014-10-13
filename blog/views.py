@@ -22,7 +22,7 @@ class PostDetailView(generic.DetailView):
 class CategoryPostListView(generic.ListView):
 
 
-    template_name = 'blog/category_post_list.html'
+    template_name = 'blog/post_list.html'
     context_object_name = 'post_list'
     paginate_by = 10
 

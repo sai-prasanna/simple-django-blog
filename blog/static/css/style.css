@@ -64,9 +64,19 @@ pre {
     white-space: pre-wrap;
 }
 pre.prettyprinted{
-    padding: 0 0 0 30px;
+
+    display: block;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    word-break: break-all;
+    border: 1px solid rgba(0,0,0,0.15);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
     background-color: #2B2626;
+    overflow: hidden;
 }
+
 q {
     quotes: "\201C" "\201D" "\2018" "\2019"
 }
@@ -157,7 +167,8 @@ table {
     box-sizing: border-box;
 }
 html {
-    font-size: 62.5%}
+    font-size: 62.5%;
+}
 body {
     font: 400 15px/1.5 'Helvetica Neue',  Helvetica,  Arial;
     background: #fff;
@@ -171,7 +182,8 @@ a {
 img {
     vertical-align: bottom;
     -ms-interpolation-mode: bicubic;
-    max-width: 100%}
+    max-width: 100%;
+}
 ul, ol {
     list-style: none;
     margin: 0;
@@ -261,7 +273,7 @@ h6 {
 
 }
 .post, .posts {
-    max-width: 800px;
+    max-width: 900px;
 }
 .posts{
     margin: 20px auto;
@@ -305,11 +317,17 @@ h6 {
 .post ul li a, .page ul li a {
     font-weight: 900;
 }
-.post__title, .page__title {
+.page__title {
     font-size: 30px;
     margin: 35px 0 0;
     text-align: center;
 }
+.post__title {
+    font-size: 30px;
+    margin: 15px 0;
+    float: left;
+}
+
 .page__title {
     padding: 0 0 10px;
     border-bottom: 1px solid #ddd;
@@ -318,7 +336,6 @@ h6 {
     margin: 5px 0 25px;
     border-bottom: 1px solid #ddd;
     padding: 0 0 10px;
-    text-align: center;
 }
 .post__meta p {
     display: inline-block;
@@ -326,9 +343,32 @@ h6 {
     font-size: 12px;
     margin: 0 0 0 5px;
 }
+.post__meta-date {
+    float: right;
+    margin-top: 35px;
+}
+.post__meta-categories {
+    clear: both;
+
+}
+.post__meta-categories ul li{
+    display: inline-block;
+}
+
+.post__meta-categories ul li a{
+    background: #f5f6f5;
+    color: #444;
+    padding: 2px 8px 2px 8px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+
 
 .post__content{
     font-family: "freight-text-pro",Georgia,Cambria,"Times New Roman",Times,serif;
+    overflow:hidden;
     letter-spacing: 0.01rem;
     font-weight: 400;
     font-style: normal;
@@ -336,6 +376,46 @@ h6 {
     line-height: 1.5;
 }
 
+.category__title {
+
+    text-align: center;
+    margin: 20px 0 20px 0;
+    font-size: 25px;
+    color: crimson;
+    border-bottom: 1px solid #ddd;
+    padding: 0 0 10px 0;
+}
+.pagination {
+    background: #f5f6f5;
+    color: #444;
+    max-width: 900px;
+    margin-top: 30px;
+}
+.pagination a, .pagination span {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    padding: 15px 25px;
+    display: inline-block;
+}
+.pagination a {
+    color: #444;
+    background: #f5f6f5;
+}
+.pagination a:hover{
+    background:#e8eae8;
+}
+.pagination--previous {
+    float: left;
+    width: 50%;
+}
+.pagination--next {
+    text-align: right;
+    float: right;
+    width: 50%;
+}
 
 .disqus {
     margin: 0 0 50px;
