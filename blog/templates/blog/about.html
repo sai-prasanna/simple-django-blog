@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+{% load staticfiles %}
+{% block main %}
+<div class="text-editor-wrap">
+  <div class="title-bar"><span class="title">Sai Prasanna — bash </span></div>
+    <div class="text-body">
+    <span id="typed" style="white-space:pre"></span>
+  </div>
+</div>
+{% endblock %}
+{% block js %}
+{{ block.super }}
+<script src="{% static 'js/typed.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+{% endblock %}

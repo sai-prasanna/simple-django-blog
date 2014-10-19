@@ -11,6 +11,7 @@ class PostListView(generic.ListView):
     context_object_name = 'post_list'
     paginate_by = 10
 
+
 class PostDetailView(generic.DetailView):
 
 
@@ -28,12 +29,17 @@ class CategoryPostListView(generic.ListView):
 
     def get(self, request, *args, **kwargs):
         self.slug = kwargs.get('slug')
-        self.queryset = Post.objects.filter(categories__slug=self.slug).values(
-            'title', 'created_at', 'slug'
-            )
+        self.queryset = Post.objects.filter(categories__slug=self.slug)
         return super(CategoryPostListView, self).get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super(CategoryPostListView, self).get_context_data(**kwargs)
         context['category'] = get_object_or_404(Category, slug=self.slug)
         return context
+
+
+class AboutPageView(generic.TemplateView):
+
+
+    template_name = "blog/about.html"
+

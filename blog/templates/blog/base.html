@@ -12,21 +12,21 @@
   {% endblock %}
 </head>
 <body>
-  <div class="sidebar clear">
-    <div class="sidebar__profile">
+  {% block sidebar %}
+  <div id="sidebar" class="clear">
+    <div id="sidebar__profile">
       <a href="/">
-        <img src="{% static 'img/sai.jpg' %}" alt="Sai Prasanna" class="sidebar__profile-img">
+        <img src="{% static 'img/sai.jpg' %}" alt="Sai Prasanna" id="sidebar__profile-img">
       </a>
-      <h1 class="sidebar__profile-name">
+      <h1 id="sidebar__profile-name">
           Sai Prasanna
       </h1>
-      <div class="sidebar__profile-bio clear">
+      <div id="sidebar__profile-bio clear">
         <p>
-            Web Developer <br>
-            Python Programmer <br>
+            Software Developer <br>
         </p>
       </div>
-      <div class="sidebar__profile-social">
+      <div id="sidebar__profile-social">
         <ul>
           <li>
             <a href="//github.com/sai-prasanna">
@@ -40,15 +40,15 @@
           </li>
         </ul>
       </div>
-      <nav class="sidebar__profile-nav">
+      <nav id="sidebar__profile-nav">
         <ul>
             <li>
-              <a href="/">
+              <a href="{% url 'post-list' %}">
                 Posts
               </a>
             </li><!--
             --><li>
-              <a href="/about">
+              <a href="{% url 'about-page' %}">
                 About
               </a>
             </li><!--
@@ -61,18 +61,19 @@
       </nav>
     </div>
   </div>
+  {% endblock %}
 
-
-  <div class="main" role="main">
+  <div id="main" role="main">
     {% block main %}
     {% endblock %}
-
   </div>
 
 {% block extra_body %}
 {% endblock %}
 
 {% block js %}
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=sons-of-obsidian"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 {% endblock %}
 </body>

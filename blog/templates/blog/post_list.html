@@ -1,40 +1,68 @@
 {% extends 'blog/base.html' %}
+
+{% block head_title %}Posts{% endblock %}
+
 {% block main %}
-<div class="posts">
+<div id="posts">
   {% if category %}
-   <h2 class="category__title">Category: {{ category.name }}</h2>
+   <h2 id="category__title">{{ category.name }}</h2>
   {% endif %}
   {% if post_list %}
-    <ul class="posts__list">
+    <ul id="posts__list">
       {% for post in post_list %}
         <li>
-          <a href="{% url 'post-detail' post.slug %}">
-              <h2 class="posts__title">{{ post.title }}</h2>
-              <span class="posts__date">{{ post.created_at | date:"M d, Y"}}</span>
-          </a>
+          <div class="post__meta">
+            <a href="{% url 'post-detail' post.slug %}">
+              <h1 class="post__title">
+                {{ post.title }}
+              </h1>
+            </a>
+
+            <span class="post__meta-date">
+              {{ post.created_at | date:"M d, Y" }}
+            </span>
+            <div class="post__meta-categories">
+              <ul>
+              {% for category in post.categories.all %}
+                <li>
+                  <a href="{{ category.get_absolute_url }}">
+                    <i class="fa fa-tag"></i>
+                    {{ category.name }}
+                  </a>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+
+          <div class="post__content">
+            {{ post.content|truncatewords_html:100|safe }}
+            <a class="read-more" href="{% url 'post-detail' post.slug %}">read more</a>
+          </div>
+
         </li>
       {% endfor %}
     </ul>
     {% if is_paginated %}
-      <div class="pagination clear">
+      <div id="pagination" class="clear">
         {% if page_obj.has_previous %}
-          <a href="?page={{ page_obj.previous_page_number }}" class="pagination--previous">
+          <a href="?page={{ page_obj.previous_page_number }}" id="pagination--previous">
             <i class="fa fa-angle-double-left"></i>
             Previous
           </a>
         {% else %}
-          <span class="pagination--previous">
+          <span id="pagination--previous">
             <i class="fa fa-angle-double-left"></i>
             Previous
           </span>
         {% endif %}
         {% if page_obj.has_next %}
-          <a href="?page={{ page_obj.next_page_number }}" class="pagination--next">
+          <a href="?page={{ page_obj.next_page_number }}" id="pagination--next">
             Next
             <i class="fa fa-angle-double-right"></i>
           </a>
         {% else %}
-          <span class="pagination--next">
+          <span id="pagination--next">
             Next
             <i class="fa fa-angle-double-right"></i>
           </span>
@@ -42,8 +70,7 @@
       </div>
     {% endif %}
   {% else %}
-    <h2 class="posts__title">No Posts Yet.</h2>
+    <h2 id="posts__title">No Posts Yet.</h2>
   {% endif %}
-
 </div>
 {% endblock %}
