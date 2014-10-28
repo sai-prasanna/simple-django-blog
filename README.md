@@ -1,4 +1,4 @@
-saiprasanna.in
+Simple Django Blog
 ======
 
-Source Code for my website,blog.
+A blog in django 
